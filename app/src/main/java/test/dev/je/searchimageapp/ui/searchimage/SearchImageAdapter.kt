@@ -35,7 +35,8 @@ class SearchImageAdapter(val activity: BaseActivity, val itemClick:(Item)->Unit)
                 }
                 // println("item image link : "+item.image)
                 imgContent.loadImage(activity, item.image)
-                txtContentFrom.text = item.title.replace("&lt;b&gt;", "").replace("&lt;/b&gt;", "")
+                txtContentFrom.text = item.title.replace("&lt;b&gt;", "").replace("&lt;/b&gt;" +
+                        "", "").replace("&lt;", "").replace("&gt;", "")
             }
         }
     }
