@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "test.dev.je.searchimageapp"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:design:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // Retrofit API
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+
+    // OK HTTP
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okHttpVersion"
+
+    // ImageLoad library
+    // https://github.com/bumptech/glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
+
+    // rxjava
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjavaVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rootProject.ext.rxAdapterVersion"
+}
